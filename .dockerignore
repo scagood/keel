@@ -1,24 +1,7 @@
 **
 
 # CLI
-!approvals/
-!bot/
-!cmd/
-!constants/
-!extension/
-!internal/
-!pkg/
-!provider/
-!registry/
-!secrets/
-!trigger/
-!types/
-!util/
-!version/
-!go.mod
-!go.sum
-!LICENSE
-!Makefile
+!cmd/keel/release
 
 # UI
 !ui/.yarn/releases
