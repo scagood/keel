@@ -25,13 +25,16 @@ jobs:
       - name: Prebuild binaries
         working-directory: cmd/keel
         run: |
+          wget -P ~ https://musl.cc/aarch64-linux-musl-cross.tgz
+          tar -xvf ~/aarch64-linux-musl-cross.tgz -C ~
+
           # Only the basic flags for now
           LDFLAGS="-X github.com/keel-hq/keel/version.Version=$GITHUB_REF "
           LDFLAGS+="-X github.com/keel-hq/keel/version.Revision=${GITHUB_SHA::7} "
           LDFLAGS+="-X github.com/keel-hq/keel/version.BuildDate=$(date -u +%Y-%m-%dT%H%M%SZ)"
 
           # CGO_ENABLED=1 GOARCH=arm GOOS=linux go build -ldflags="$LDFLAGS" -o release/keel-linux-arm
-          CGO_ENABLED=1 GOARCH=arm64 GOOS=linux go build -ldflags="$LDFLAGS" -o release/keel-linux-arm64
+          CGO_ENABLED=1 GOARCH=arm64 GOOS=linux CC=~/aarch64-linux-musl-cross/bin/aarch64-linux-musl-gcc go build -ldflags="$LDFLAGS" -o release/keel-linux-arm64
           CGO_ENABLED=1 GOARCH=amd64 GOOS=linux go build -ldflags="$LDFLAGS" -o release/keel-linux-amd64
 
       - run: yarn install
