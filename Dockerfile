@@ -1,11 +1,11 @@
 # syntax=docker.io/docker/dockerfile:1.7-labs
 
-FROM golang:1.22.8 as cli
+FROM golang:1.22.8 AS cli
 COPY  --exclude=ui . /go/src/github.com/keel-hq/keel
 WORKDIR /go/src/github.com/keel-hq/keel
 RUN make build
 
-FROM node:22-alpine as ui
+FROM node:22-alpine AS ui
 WORKDIR /app
 
 # Setup yarn

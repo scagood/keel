@@ -21,7 +21,7 @@ jobs:
       - uses: docker/metadata-action@v5
         id: metadata
         with:
-          images: ghcr.io/${{ github.repository_owner }}/${{ github.repository }}
+          images: ghcr.io/${{ github.repository }}
           tags: |
             type=ref,event=branch
             type=ref,event=pr
@@ -35,7 +35,7 @@ jobs:
         with:
           context: .
           platforms: linux/amd64,linux/arm64
-          cache-from: type=registry,ref=ghcr.io/${{ github.repository_owner }}/${{ github.repository }}:main
+          cache-from: type=registry,ref=ghcr.io/${{ github.repository }}:main
           cache-to: type=inline
           push: true
           tags: ${{ steps.metadata.outputs.tags }}
@@ -46,7 +46,4 @@ jobs:
         with:
             token: ${{ secrets.GITHUB_TOKEN }}
             owner_type: user
-            repository_owner: ${{ github.repository_owner }}
-            repository: ${{ github.repository }}
-            package_name: ${{ github.repository }}
             untagged_only: true
