@@ -34,8 +34,8 @@ jobs:
         working-directory: cmd/keel
         run: |
           # Only the basic flags for now
-          # LDFLAGS="-X github.com/keel-hq/keel/version.Version=$(git describe --tags --abbrev=0) "
-          LDFLAGS+="-X github.com/keel-hq/keel/version.Revision=$(git rev-parse --short HEAD) "
+          LDFLAGS="-X github.com/keel-hq/keel/version.Version=$GITHUB_REF "
+          LDFLAGS+="-X github.com/keel-hq/keel/version.Revision=${GITHUB_SHA::7} "
           LDFLAGS+="-X github.com/keel-hq/keel/version.BuildDate=$(date -u +%Y-%m-%dT%H%M%SZ)"
 
           # GOARCH=arm GOOS=linux go build -ldflags="$LDFLAGS" -o release/keel-linux-arm
@@ -46,6 +46,7 @@ jobs:
         with:
           node-version: "22"
           cache: yarn
+          cache-dependency-path: 'ui'
       - run: yarn install
         working-directory: ui
       - run: yarn run build
