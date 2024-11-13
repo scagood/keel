@@ -16,8 +16,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-          cache: yarn
-          cache-dependency-path: 'ui'
+          # cache: yarn
+          # cache-dependency-path: 'ui'
 
       - uses: docker/setup-qemu-action@v3
       - uses: docker/setup-buildx-action@v3
