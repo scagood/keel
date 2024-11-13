@@ -1,15 +1,4 @@
 **
 
-# CLI
 !cmd/keel/release
-
-# UI
-!ui/.yarn/releases
-!ui/.yarnrc.yml
-!ui/package.json
-!ui/yarn.lock
-
-!ui/public/
-!ui/src/
-!ui/babel.config.js
-!ui/vue.config.js
+!ui/dist
