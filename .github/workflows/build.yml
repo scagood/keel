@@ -1,8 +1,9 @@
-name: ci
+name: Build Dockerfile
 on:
   push:
     branches:
       - 'main'
+      - 'master'
     tags:
       - 'v*'
 
