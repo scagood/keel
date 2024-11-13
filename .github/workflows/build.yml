@@ -30,9 +30,9 @@ jobs:
           LDFLAGS+="-X github.com/keel-hq/keel/version.Revision=${GITHUB_SHA::7} "
           LDFLAGS+="-X github.com/keel-hq/keel/version.BuildDate=$(date -u +%Y-%m-%dT%H%M%SZ)"
 
-          # GOARCH=arm GOOS=linux go build -ldflags="$LDFLAGS" -o release/keel-linux-arm
-          GOARCH=arm64 GOOS=linux go build -ldflags="$LDFLAGS" -o release/keel-linux-arm64
-          GOARCH=amd64 GOOS=linux go build -ldflags="$LDFLAGS" -o release/keel-linux-amd64
+          # CGO_ENABLED=1 GOARCH=arm GOOS=linux go build -ldflags="$LDFLAGS" -o release/keel-linux-arm
+          CGO_ENABLED=1 GOARCH=arm64 GOOS=linux go build -ldflags="$LDFLAGS" -o release/keel-linux-arm64
+          CGO_ENABLED=1 GOARCH=amd64 GOOS=linux go build -ldflags="$LDFLAGS" -o release/keel-linux-amd64
 
       - run: yarn install
         working-directory: ui
