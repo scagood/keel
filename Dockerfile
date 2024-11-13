@@ -1,6 +1,3 @@
-FROM node:22-alpine AS ui
-WORKDIR /app
-
 FROM alpine:3
 RUN apk --no-cache add ca-certificates
 
