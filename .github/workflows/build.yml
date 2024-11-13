@@ -25,7 +25,7 @@ jobs:
       - name: Prebuild binaries
         working-directory: cmd/keel
         run: |
-          wget -P ~ https://musl.cc/aarch64-linux-musl-cross.tgz
+          wget -q -P ~ https://musl.cc/aarch64-linux-musl-cross.tgz
           tar -xvf ~/aarch64-linux-musl-cross.tgz -C ~
 
           # Only the basic flags for now
