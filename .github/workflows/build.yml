@@ -26,7 +26,7 @@ jobs:
         working-directory: cmd/keel
         run: |
           wget -q -P ~ https://musl.cc/aarch64-linux-musl-cross.tgz
-          tar -xvf ~/aarch64-linux-musl-cross.tgz -C ~ 2> /dev/null
+          tar -xvf ~/aarch64-linux-musl-cross.tgz -C ~ > /dev/null
 
           # Only the basic flags for now
           LDFLAGS="-X github.com/keel-hq/keel/version.Version=$GITHUB_REF "
