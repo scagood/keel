@@ -14,7 +14,7 @@ FROM alpine:3.20.3
 RUN apk --no-cache add ca-certificates
 
 VOLUME /data
-ENV XDG_DATA_HOME /data
+ENV XDG_DATA_HOME=/data
 
 COPY --from=0 /go/bin/keel /bin/keel
 COPY --from=1 /app/dist /www
